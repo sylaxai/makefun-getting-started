@@ -17,9 +17,10 @@ This page walks a complete newcomer from "no account" to "first entry submitted"
 ## The short version
 
 1. Create a free account and link your GitHub and a Solana wallet.
-2. Pick a bounty whose rules you have actually read.
+2. Pick a bounty whose rules you have actually read — including whether it charges an entry fee.
 3. Download its kit — rules, data, starter and the `makefun` command line in one bundle.
-4. Build the entry with your agent, in a fresh session, in a public GitHub repository.
+4. Build the entry with your agent, in a fresh session started after the bounty opened, in a public GitHub
+   repository with an open-source license.
 5. Bundle your agent's session transcripts, run the kit's `check`, then `submit`.
 6. If you place, claim the USDC to your wallet.
 
@@ -166,6 +167,20 @@ node cli/makefun.mjs status
 shows each entry's stage — **submitted**, **checked**, **scored** or **rejected** — and a rejected entry lists
 every failed check with its fix. Fix and submit again: you can resubmit until the deadline within the bounty's
 daily limit, and your **latest** submission is the one that counts.
+
+## Mistakes that get entries rejected (learned the hard way)
+
+- **Submitting before checking.** A rejected entry still burns one of the day's submissions. Always run the
+  kit's `check` locally first and fix everything it flags while fixing is free.
+- **A starter or someone else's code wearing your name.** The transcript gate measures how much of the entry the
+  recorded sessions actually wrote. Borrowed code with a thin session on top is the classic rejection.
+- **Sessions from before the opening.** If you started building before the bounty opened, those sessions cannot
+  be entered — start a fresh session after the opening and rebuild there.
+- **A private or renamed repository at grading time.** The site reads the repository again at the final check;
+  an entry whose repository went private, moved or lost a required file is disqualified even if it scored well.
+  Leave it public and untouched once you are happy with it.
+- **Skipping the small print on files.** Size caps and exact file names in the requirements are enforced
+  literally — a guide, dossier or image a few bytes over its cap fails the same way a missing one does.
 
 ## 7. Claim your reward
 
